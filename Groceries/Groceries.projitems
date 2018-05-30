@@ -12,5 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ItemClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UserClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GroceryListClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppData.cs" />
   </ItemGroup>
 </Project>
