@@ -14,14 +14,20 @@ namespace Groceries.iOS
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            return 5;
+            return AppData.currentLists.Count;
         }
    
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             UITableViewCell cell = tableView.DequeueReusableCell("listsCell");
 
-            cell.TextLabel.Text = "Test";
+            GroceryListClass thisList = AppData.currentLists[indexPath.Row];
+
+            cell.TextLabel.Text = thisList.Name;
+            string sub = thisList.Items.Count.ToString() + " items for " +
+                                 thisList.Owner.Name;
+
+            cell.DetailTextLabel.Text = sub;
 
             return cell;
         }

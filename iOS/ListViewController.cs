@@ -16,6 +16,15 @@ namespace Groceries.iOS
 
             ListsDataSource tableDs = new ListsDataSource(this);
             groceryListTableView.Source = tableDs;
+
+            AppData.curUser = new UserClass()
+            {
+                Name = "Joe",
+                Email = "defEmail",
+                Uid = "defUid"
+            };
+            PrepareFirstLists.Prepare();
+            groceryListTableView.ReloadData();
         }
 
         partial void NewListButton_TouchUpInside(UIButton sender)
