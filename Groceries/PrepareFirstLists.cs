@@ -15,6 +15,41 @@ namespace Groceries
                 Owner = AppData.curUser,
                 Items = new List<ItemClass>()
             });
+
+            AppData.currentLists[0].Items.Add(new ItemClass()
+            {
+                Name = "Bread",
+                Time = DateTime.UtcNow.ToString(),
+                Purchased = false.ToString()
+            });
+
+            AppData.currentLists[0].Items.Add(new ItemClass()
+            {
+                Name = "Milk",
+                Time = DateTime.UtcNow.ToString(),
+                Purchased = false.ToString()
+            });
+
+            AppData.currentLists.Add(new GroceryListClass()
+            {
+                Name = "Office Stuff",
+                Owner = AppData.curUser,
+                Items = new List<ItemClass>()
+            });
+
+            AppData.currentLists[1].Items.Add(new ItemClass()
+            {
+                Name = "Pen",
+                Time = DateTime.UtcNow.ToString(),
+                Purchased = false.ToString()
+            });
+
+            AppData.currentLists[1].Items.Add(new ItemClass()
+            {
+                Name = "Paper",
+                Time = DateTime.UtcNow.ToString(),
+                Purchased = false.ToString()
+            });
         }
     }
 }
