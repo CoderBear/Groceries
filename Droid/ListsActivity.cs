@@ -26,6 +26,17 @@ namespace Groceries.Droid
             SetContentView(Resource.Layout.ListsLayout);
 
             InterfaceBuilder();
+
+            string[] countries = new string[]
+            {
+                "USA", "Canada", "Mexico", "Japan", "India", "China"
+            };
+
+            ArrayAdapter listAdapter = new ArrayAdapter(this,
+                                                        Android.Resource.Layout.SimpleListItem1,
+                                                        countries);
+
+            groceryListView.Adapter = listAdapter;
         }
 
         void InterfaceBuilder()
