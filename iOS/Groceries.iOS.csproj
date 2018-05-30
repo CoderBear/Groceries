@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Classes\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -104,6 +105,7 @@
     <Compile Include="ListViewController.designer.cs">
       <DependentUpon>ListViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ListsDataSource.cs" />
   </ItemGroup>
   <Import Project="..\Groceries\Groceries.projitems" Label="Shared" Condition="Exists('..\Groceries\Groceries.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
