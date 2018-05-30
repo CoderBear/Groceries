@@ -9,6 +9,8 @@
     <Import_RootNamespace>Groceries</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)MyClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ItemClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GroceryListClass.cs" />
   </ItemGroup>
 </Project>
