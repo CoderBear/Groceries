@@ -19,6 +19,7 @@ namespace Groceries.Droid
         Button newListButton;
         ListView groceryListView;
         Button profileButton;
+        ListRowCustomAdapter groceryAdapter;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -27,16 +28,17 @@ namespace Groceries.Droid
 
             InterfaceBuilder();
 
-            string[] countries = new string[]
+            AppData.GetInstance();
+            AppData.curUser = new UserClass()
             {
-                "USA", "Canada", "Mexico", "Japan", "India", "China"
+                Name = "Joe",
+                Email = "defEmail",
+                Uid = "defUid"
             };
+            PrepareFirstLists.Prepare();
 
-            ArrayAdapter listAdapter = new ArrayAdapter(this,
-                                                        Android.Resource.Layout.SimpleListItem1,
-                                                        countries);
-
-            groceryListView.Adapter = listAdapter;
+            groceryAdapter = new ListRowCustomAdapter(this, AppData.currentLists);
+            groceryListView.Adapter = groceryAdapter;
         }
 
         void InterfaceBuilder()

@@ -47,6 +47,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ListsActivity.cs" />
+    <Compile Include="Classes\ListRowCustomAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -64,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
+    <Folder Include="Classes\" />
   </ItemGroup>
   <Import Project="..\Groceries\Groceries.projitems" Label="Shared" Condition="Exists('..\Groceries\Groceries.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
