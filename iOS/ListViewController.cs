@@ -1,5 +1,6 @@
 using Foundation;
 using System;
+using System.Collections.Generic;
 using UIKit;
 
 namespace Groceries.iOS
@@ -29,7 +30,43 @@ namespace Groceries.iOS
 
         partial void NewListButton_TouchUpInside(UIButton sender)
         {
-            throw new NotImplementedException();
+            UIAlertController alert;
+            alert = UIAlertController.Create("New List",
+                                            "Please enter a name",
+                                             UIAlertControllerStyle.Alert);
+
+            alert.AddTextField((field) =>
+            {
+                field.Placeholder = "list name";
+                field.KeyboardType = UIKeyboardType.Default;
+                field.Font = UIFont.SystemFontOfSize(22);
+                field.TextAlignment = UITextAlignment.Center;
+            });
+
+            UIAlertAction saveAction;
+            saveAction = UIAlertAction.Create("Save",
+                                              UIAlertActionStyle.Default,
+                                              (obj) => SaveAction(alert.TextFields[0].Text));
+            alert.AddAction(saveAction);
+            alert.AddAction(UIAlertAction.Create("Cancel",
+                                                 UIAlertActionStyle.Cancel,
+                                                 null));
+
+            PresentViewController(alert, true, null);
+        }
+
+        void SaveAction(string inpListName)
+        {
+            GroceryListClass newList = new GroceryListClass()
+            {
+                Name = inpListName,
+                Owner = AppData.curUser,
+                Items = new List<ItemClass>()
+            };
+
+            AppData.currentLists.Add(newList);
+
+            groceryListTableView.ReloadData();
         }
 
         partial void ProfileButton_TouchUpInside(UIButton sender)
