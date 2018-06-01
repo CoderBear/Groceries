@@ -44,14 +44,14 @@ namespace Groceries.Droid
         void InterfaceBuilder()
         {
             newListButton = FindViewById<Button>(Resource.Id.newListButton_id);
-            newListButton.Click += NewListButton_Click;
+            newListButton.Click += NewListAlertView;
 
             groceryListView = FindViewById<ListView>(Resource.Id.groceryListView_id);
             groceryListView.ItemClick += GotoItems;
             groceryListView.ItemLongClick += DeleteListAlert;
 
             profileButton = FindViewById<Button>(Resource.Id.profileButton_id);
-            profileButton.Click += ProfileButton_Click;
+            profileButton.Click += ProfileAction;
         }
 
         void DeleteListAlert(object sender, AdapterView.ItemLongClickEventArgs e)
@@ -62,14 +62,46 @@ namespace Groceries.Droid
         {
         }
 
-
-        void NewListButton_Click(object sender, EventArgs e)
+        void NewListAlertView(object sender, EventArgs e)
         {
+            AlertDialog.Builder alert;
+            alert = new AlertDialog.Builder(this);
+            alert.SetTitle("New List");
+            alert.SetMessage("Please enter the name of your new list");
+
+            EditText input = new EditText(this)
+            {
+                TextSize = 22,
+                Gravity = GravityFlags.Center,
+                Hint = "New List"
+            };
+            input.SetSingleLine(true);
+            alert.SetView(input);
+
+            alert.SetPositiveButton("Save",
+                                    (senderAleert, eAlert) => NewListSave(input.Text));
+            alert.SetNegativeButton("Cancel",
+                                    (senderAlert, eAlert) => { });
+            
+            Dialog dialog = alert.Create();
+            dialog.Show();
         }
 
-        void ProfileButton_Click(object sender, EventArgs e)
+        void NewListSave(string inpListName)
         {
+            GroceryListClass newList = new GroceryListClass()
+            {
+                Name = inpListName,
+                Owner = AppData.curUser,
+                Items = new List<ItemClass>()
+            };
+
+            AppData.currentLists.Add(newList);
+            groceryAdapter.NotifyDataSetChanged();
         }
 
+        void ProfileAction(object sender, EventArgs e)
+        {
+        }
     }
 }
