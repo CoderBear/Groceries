@@ -6,6 +6,7 @@ namespace Groceries
     {
         public static UserClass curUser;
         public static List<GroceryListClass> currentLists;
+        public static List<GroceryListClass> offlineLists;
 
         private static AppData instance;
 

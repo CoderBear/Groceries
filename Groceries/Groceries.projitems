@@ -14,5 +14,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)GroceryListClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AppData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PrepareFirstLists.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ReadWrite.cs" />
   </ItemGroup>
 </Project>
