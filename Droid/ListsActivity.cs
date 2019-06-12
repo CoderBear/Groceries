@@ -29,14 +29,13 @@ namespace Groceries.Droid
             InterfaceBuilder();
 
             AppData.GetInstance();
-            AppData.curUser = new UserClass()
-            {
-                Name = "Joe",
-                Email = "defEmail",
-                Uid = "defUid"
-            };
-            PrepareFirstLists.Prepare();
 
+            ReloadData();
+        }
+
+        public void ReloadData()
+        {
+            ReadAllData.Read(this);
             groceryAdapter = new ListRowCustomAdapter(this, AppData.currentLists);
             groceryListView.Adapter = groceryAdapter;
         }
@@ -97,6 +96,7 @@ namespace Groceries.Droid
             };
 
             AppData.currentLists.Add(newList);
+            ReadWrite.WriteData();
             groceryAdapter.NotifyDataSetChanged();
         }
 
