@@ -110,7 +110,7 @@
       <DependentUpon>ListViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\ListsDataSource.cs" />
-    <Compile Include="ReadAllData.cs" />
+    <Compile Include="Classes\ReadAllData.cs" />
   </ItemGroup>
   <Import Project="..\Groceries\Groceries.projitems" Label="Shared" Condition="Exists('..\Groceries\Groceries.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

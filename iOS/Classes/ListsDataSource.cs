@@ -31,5 +31,23 @@ namespace Groceries.iOS
 
             return cell;
         }
+
+        public override bool CanEditRow(UITableView tableView, NSIndexPath indexPath)
+        {
+            return true;
+        }
+
+        public override string TitleForDeleteConfirmation(UITableView tableView, NSIndexPath indexPath)
+        {
+            return "Delete?";
+        }
+
+        public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
+        {
+            GroceryListClass toRemove = AppData.currentLists[indexPath.Row];
+            AppData.currentLists.Remove(toRemove);
+            ReadWrite.WriteData();
+            tableView.DeleteRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+        }
     }
 }
