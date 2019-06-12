@@ -18,13 +18,13 @@ namespace Groceries.iOS
             ListsDataSource tableDs = new ListsDataSource(this);
             groceryListTableView.Source = tableDs;
 
-            AppData.curUser = new UserClass()
-            {
-                Name = "Joe",
-                Email = "defEmail",
-                Uid = "defUid"
-            };
-            PrepareFirstLists.Prepare();
+            ReloadData();
+        }
+
+        //async Task
+        public void ReloadData()
+        {
+            ReadAllData.Read(this);
             groceryListTableView.ReloadData();
         }
 
@@ -65,6 +65,7 @@ namespace Groceries.iOS
             };
 
             AppData.currentLists.Add(newList);
+            ReadWrite.WriteData();
 
             groceryListTableView.ReloadData();
         }
