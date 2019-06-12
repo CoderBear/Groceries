@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Java.Lang;
 
 namespace Groceries.Droid
 {
@@ -55,6 +56,31 @@ namespace Groceries.Droid
 
         void DeleteListAlert(object sender, AdapterView.ItemLongClickEventArgs e)
         {
+            GroceryListClass toRemove = AppData.currentLists[e.Position];
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.SetTitle("Confirm Delete?");
+            alert.SetMessage("Are you sure you want to delete this list?");
+            alert.SetPositiveButton("Delete", (senderAlert, eAlert) => DeleteList(toRemove, e));
+            alert.SetNegativeButton("Cancel", (senderAlert, eAlert) => { });
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
+        }
+
+        void DeleteList(GroceryListClass inputList, AdapterView.ItemClickEventArgs e)
+        {
+            e.View.Animate()
+             .SetDuration(750)
+             .Alpha(0)
+             .WithEndAction(new Runnable(() =>
+            {
+                AppData.currentLists.Remove(inputList);
+                ReadWrite.WriteData();
+                groceryAdapter.NotifyDataSetChanged();
+
+                e.View.Alpha = 1;
+            }));
         }
 
         void GotoItems(object sender, AdapterView.ItemClickEventArgs e)
